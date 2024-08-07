@@ -4,7 +4,6 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
-import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   metadataBase: new URL(
@@ -46,7 +45,6 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
         </ThemeProvider>
-        <Toaster />
       </body>
     </html>
   );

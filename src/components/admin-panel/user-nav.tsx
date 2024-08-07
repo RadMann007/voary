@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { LayoutGrid, LogOut, User2Icon } from "lucide-react";
+import { LayoutGrid, LogOut, User } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -20,12 +20,8 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
-import { useRouter } from "next/navigation";
 
 export function UserNav() {
-
-  const router = useRouter();
-
   return (
     <DropdownMenu>
       <TooltipProvider disableHoverableContent>
@@ -50,10 +46,10 @@ export function UserNav() {
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Admin</p>
-            {/* <p className="text-xs leading-none text-muted-foreground">
+            <p className="text-sm font-medium leading-none">John Doe</p>
+            <p className="text-xs leading-none text-muted-foreground">
               johndoe@example.com
-            </p> */}
+            </p>
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
@@ -61,20 +57,20 @@ export function UserNav() {
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
             <Link href="/dashboard" className="flex items-center">
               <LayoutGrid className="w-4 h-4 mr-3 text-muted-foreground" />
-              Tableau de bord
+              Dashboard
             </Link>
           </DropdownMenuItem>
           <DropdownMenuItem className="hover:cursor-pointer" asChild>
-            <Link href="/users/listes" className="flex items-center">
-              <User2Icon className="w-4 h-4 mr-3 text-muted-foreground" />
-              Utilisateur
+            <Link href="/account" className="flex items-center">
+              <User className="w-4 h-4 mr-3 text-muted-foreground" />
+              Account
             </Link>
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="hover:cursor-pointer" onClick={() => {router.push("/")}}>
+        <DropdownMenuItem className="hover:cursor-pointer" onClick={() => {}}>
           <LogOut className="w-4 h-4 mr-3 text-muted-foreground" />
-          Se déconnecter
+          Sign out
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
