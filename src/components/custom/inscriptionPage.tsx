@@ -16,7 +16,6 @@ import React, { useState } from 'react'
 import { User } from "@prisma/client"
 import { insertOneUser } from "@/lib/actions"
 import { useRouter } from "next/navigation"
-// import ListUserComponents from "@/components/custom/listUsers"
 
 
 export default function InscriptionPage() {
@@ -32,10 +31,10 @@ export default function InscriptionPage() {
   const insertUser = async () => {
     setIsLoading(true)
     const data: User = {
-      email: email,
-      firstname: firstname,
-      name: lastname,
-      password: password,
+      email,
+      firstname,
+      lastname,
+      password,
       id:0
     }
     await insertOneUser(data);
@@ -96,7 +95,6 @@ export default function InscriptionPage() {
             </Link>
           </div>
         </CardContent>
-        {/* <ListUserComponents /> */}
       </Card>
     </div>
   )

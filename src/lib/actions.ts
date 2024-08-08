@@ -10,7 +10,7 @@ export async function insertOneUser(data: User) {
         data: {
             email: data.email,
             firstname: data.firstname,
-            name: data.name,
+            lastname: data.lastname,
             password: data.password
         }
     });
