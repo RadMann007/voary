@@ -17,6 +17,7 @@ export async function insertOneUser({ data }: { data: Utilisateur }) {
 }
 
 export async function getAllUser() {
+    await prisma.$connect();
     const userLst = await prisma.utilisateur.findMany();
     await prisma.$disconnect();
     return userLst;
