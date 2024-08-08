@@ -36,7 +36,11 @@ export default function InscriptionPage() {
       password,
       id: 0
     }
-    await insertOneUser({data});
+    try {
+      await insertOneUser({data});
+    } catch (error) {
+      console.log(error);
+    }
     setFirstname("");
     setLastName("");
     setEmail("");
