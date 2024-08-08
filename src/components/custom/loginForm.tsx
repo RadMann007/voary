@@ -7,6 +7,9 @@ import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
 import { connectUser } from "@/lib/actions"
 import { useState } from "react"
+import { toast } from "sonner"
+import { useToast } from "../ui/use-toast"
+import { ToastAction } from "../ui/toast"
 
 export function LoginForm() {
 
@@ -15,6 +18,7 @@ export function LoginForm() {
   const [isLoading, setIsloading] = useState(false);
 
   const router = useRouter();
+  const {toast} = useToast();
 
   const login = async () => {
     setIsloading(true)
@@ -23,7 +27,8 @@ export function LoginForm() {
       router.push("/dashboard");
       setIsloading(true)
     }else{
-      setIsloading(false)
+      setIsloading(false);
+      toast({title: "Erreur", description: "Veuillez réessayer svp!", variant: "destructive", action: <ToastAction altText="OK">OK</ToastAction>})
       return;
     }
   }
