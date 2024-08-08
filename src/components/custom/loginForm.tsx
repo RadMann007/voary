@@ -5,13 +5,27 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
+import { connectUser } from "@/lib/actions"
+import { useState } from "react"
 
 export function LoginForm() {
+
+  const [email, setEmail] = useState("");
+  const [mdp, setMdp] = useState("");
+  const [isLoading, setIsloading] = useState(false);
 
   const router = useRouter();
 
   const login = async () => {
-    router.push("/dashboard")
+    setIsloading(true)
+    const connect = await connectUser({email: email, mdp: mdp});
+    if(connect){
+      router.push("/dashboard");
+      setIsloading(true)
+    }else{
+      setIsloading(false)
+      return;
+    }
   }
 
   return (
@@ -32,6 +46,8 @@ export function LoginForm() {
                 type="email"
                 placeholder="m@example.com"
                 required
+                value={email}
+                onChange={e => setEmail(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
@@ -44,10 +60,12 @@ export function LoginForm() {
                   Forgot your password?
                 </Link>
               </div>
-              <Input id="password" type="password" required />
+              <Input id="password" type="password" required value={mdp} onChange={e => setMdp(e.target.value)} />
             </div>
             <Button type="submit" onClick={() => login()} className="w-full">
-              Login
+              {
+                isLoading ? <p>Chargement...</p> : <p>Connecter</p>
+              }
             </Button>
           </div>
         </div>
