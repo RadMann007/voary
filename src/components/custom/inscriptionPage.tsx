@@ -13,7 +13,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 
 import React, { useState } from 'react'
-import { User } from "@prisma/client"
+import { Utilisateur } from "@prisma/client"
 import { insertOneUser } from "@/lib/actions"
 import { useRouter } from "next/navigation"
 
@@ -30,7 +30,7 @@ export default function InscriptionPage() {
 
   const insertUser = async () => {
     setIsLoading(true)
-    const data: User = {
+    const data: Utilisateur = {
       email,
       firstname,
       lastname,

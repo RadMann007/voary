@@ -31,7 +31,15 @@ datasource db {
 //   userId Int     @unique
 // }
 
-model User {
+// model User {
+//   id      Int      @id @default(autoincrement())
+//   email   String   @unique
+//   lastname    String
+//   firstname    String
+//   password    String
+// }
+
+model Utilisateur {
   id      Int      @id @default(autoincrement())
   email   String   @unique
   lastname    String
