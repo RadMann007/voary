@@ -1,12 +1,12 @@
 "use client"
 
 import { getAllUser } from "@/lib/actions";
-import { User } from "@prisma/client";
+import { Utilisateur } from "@prisma/client";
 import { useEffect, useState } from "react";
 
 function ListUserComponents() {
 
-    const [users, setUsers] = useState<User[]>([]);
+    const [users, setUsers] = useState<Utilisateur[]>([]);
 
     const getData = async () => {
         const lst = await getAllUser();
@@ -26,7 +26,7 @@ function ListUserComponents() {
                             <p> {usr.firstname} </p>
                             <p> {usr.email} </p>
                         </div> */}
-                        <p> {usr.name} </p>
+                        <p> {usr.lastname} </p>
                     </li>
                 ))}
             </ul>
