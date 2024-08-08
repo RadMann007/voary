@@ -1,12 +1,11 @@
 "use server"
 
-import { UserInterface } from '@/components/custom/inscriptionPage';
-import {PrismaClient} from '@prisma/client';
+import { PrismaClient, Utilisateur } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
 
-export async function insertOneUser(data: UserInterface) {
+export async function insertOneUser({data}: {data: Utilisateur}) {
     await prisma.utilisateur.create({
         data: {
             email: data.email,
@@ -22,7 +21,7 @@ export async function insertOneUser(data: UserInterface) {
 }
 
 export async function getAllUser() {
-   const userLst = await prisma.utilisateur.findMany();
-   prisma.$disconnect;
-   return userLst;
+    const userLst = await prisma.utilisateur.findMany();
+    prisma.$disconnect;
+    return userLst;
 }
