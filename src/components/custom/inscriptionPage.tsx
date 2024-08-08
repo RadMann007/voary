@@ -16,6 +16,13 @@ import React, { useState } from 'react'
 import { insertOneUser } from "@/lib/actions"
 import { useRouter } from "next/navigation"
 
+export interface UserInterface {
+  id: number
+  email: string
+  lastname: string
+  firstname: string
+  password: string
+}
 
 export default function InscriptionPage() {
 
@@ -29,12 +36,12 @@ export default function InscriptionPage() {
 
   const insertUser = async () => {
     setIsLoading(true)
-    const data = {
+    const data: UserInterface = {
       email,
       firstname,
       lastname,
       password,
-      id:0
+      id: 0
     }
     await insertOneUser(data);
     setFirstname("");

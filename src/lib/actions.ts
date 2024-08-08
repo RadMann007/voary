@@ -1,11 +1,12 @@
 "use server"
 
-import {PrismaClient, Utilisateur} from '@prisma/client';
+import { UserInterface } from '@/components/custom/inscriptionPage';
+import {PrismaClient} from '@prisma/client';
 import { revalidatePath } from 'next/cache';
 
 const prisma = new PrismaClient();
 
-export async function insertOneUser(data: Utilisateur) {
+export async function insertOneUser(data: UserInterface) {
     await prisma.utilisateur.create({
         data: {
             email: data.email,
