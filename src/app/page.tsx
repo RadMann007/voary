@@ -23,7 +23,7 @@ export default function LoginPageComponent() {
   return (
     <div>
       {
-        isLoading && <LoginForm />
+        (isLoading || users.length > 0) && <LoginForm />
       }
         {
             users.length === 0 && <InscriptionPage />
