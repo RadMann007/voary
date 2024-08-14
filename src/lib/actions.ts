@@ -17,9 +17,16 @@ export async function insertOneUser({ data }: { data: Utilisateur }) {
 }
 
 export async function getAllUser() {
-    const userLst = await prisma.utilisateur.findMany();
-    await prisma.$disconnect();
-    return userLst;
+    try {
+        await prisma.$connect();
+        const userLst = await prisma.utilisateur.findMany();
+        return userLst;
+    } catch (error) {
+        return [];
+    } finally {
+        await prisma.$disconnect();
+    }
+   
 }
 
 export async function connectUser({ email, mdp }: { email: string, mdp: string }) {

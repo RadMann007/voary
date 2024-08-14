@@ -8,10 +8,12 @@ import React, { useEffect, useState } from 'react'
 
 export default function LoginPageComponent() {
   const [users, setUsers] = useState<Utilisateur[]>([]);
+  const [isLoading, setIsloading] = useState(true)
 
     const getData = async () => {
         const lst = await getAllUser();
         setUsers(lst);
+        setIsloading(false)
     }
 
     useEffect(() => {
@@ -20,8 +22,11 @@ export default function LoginPageComponent() {
 
   return (
     <div>
+      {
+        isLoading && <LoginForm />
+      }
         {
-            users.length > 0 ? <LoginForm /> : <InscriptionPage />
+            users.length > 0 && <InscriptionPage />
         }
     </div>
   )

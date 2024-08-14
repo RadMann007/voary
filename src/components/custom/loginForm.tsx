@@ -7,9 +7,9 @@ import { Label } from "@/components/ui/label"
 import { useRouter } from "next/navigation"
 import { connectUser } from "@/lib/actions"
 import { useState } from "react"
-import { toast } from "sonner"
 import { useToast } from "../ui/use-toast"
 import { ToastAction } from "../ui/toast"
+import { Loader2 } from "lucide-react"
 
 export function LoginForm() {
 
@@ -69,7 +69,9 @@ export function LoginForm() {
             </div>
             <Button type="submit" onClick={() => login()} className="w-full">
               {
-                isLoading ? <p>Chargement...</p> : <p>Connecter</p>
+                isLoading ? <p className="flex gap-2 items-center">
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />Chargement
+                  </p> : <p>Connecter</p>
               }
             </Button>
           </div>
